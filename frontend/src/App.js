@@ -3,6 +3,8 @@ import React, { useState } from "react";
 import Header from "./components/Header";
 import Search from "./components/Search";
 
+const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
+
 function App() {
   const [word, setWord] = useState("");
 
@@ -13,8 +15,19 @@ function App() {
     // how to get value of the input field (as in next line)
     //console.log(e.target[0].value);
     console.log(word); // after word is defined, one can use that instaed of e.target[0].value to get user input in the search field
+    fetch(
+      `https://api.unsplash.com/photos/random?query=${word}&client_id=${UNSPLASH_KEY}`
+    )
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   };
 
+  console.log(process.env);
   return (
     <div>
       <Header title="Images Gallery" />
