@@ -25,6 +25,7 @@ function App() {
       .catch((err) => {
         console.log(err);
       });
+    setWord("");
   };
 
   console.log(process.env);
