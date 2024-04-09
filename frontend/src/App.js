@@ -19,7 +19,7 @@ function App() {
     // console.log(e); // by inspecting the event in the console, we know
     // how to get value of the input field (as in next line)
     //console.log(e.target[0].value);
-    console.log(word); // after word is defined, one can use that instaed of e.target[0].value to get user input in the search field
+    //console.log(word); // after word is defined, one can use that instaed of e.target[0].value to get user input in the search field
     fetch(
       `https://api.unsplash.com/photos/random?query=${word}&client_id=${UNSPLASH_KEY}`
     )
@@ -36,18 +36,20 @@ function App() {
   };
 
   console.log(process.env);
+
+  const handleDeleteImage = (id) => {
+    setImages(images.filter((image) => image.id !== id));
+  };
+
   return (
     <div>
       <Header title="Images Gallery" />
       <Search word={word} setWord={setWord} handleSubmit={handleSearchSubmit} />
-      {/* {images.map((image, i) => (
-        <ImageCard key={i} image={image} />
-      ))} */}
       <Container className="mt-4">
         <Row xs={1} md={2} lg={3}>
           {images.map((image, i) => (
             <Col key={i} className="pb-3">
-              <ImageCard image={image} />
+              <ImageCard image={image} deleteImage={handleDeleteImage} />
             </Col>
           ))}
         </Row>
