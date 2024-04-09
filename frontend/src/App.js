@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import React, { useState } from "react";
+import { Col, Container, Row } from "react-bootstrap";
 import Header from "./components/Header";
 import ImageCard from "./components/ImageCard";
 import Search from "./components/Search";
@@ -39,10 +40,10 @@ function App() {
     <div>
       <Header title="Images Gallery" />
       <Search word={word} setWord={setWord} handleSubmit={handleSearchSubmit} />
-      {images.map((image, i) => (
+      {/* {images.map((image, i) => (
         <ImageCard key={i} image={image} />
-      ))}
-      {/* <Container className="mt-4">
+      ))} */}
+      <Container className="mt-4">
         <Row xs={1} md={2} lg={3}>
           {images.map((image, i) => (
             <Col key={i} className="pb-3">
@@ -50,7 +51,7 @@ function App() {
             </Col>
           ))}
         </Row>
-      </Container> */}
+      </Container>
     </div>
   );
 }
