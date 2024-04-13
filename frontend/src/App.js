@@ -6,7 +6,8 @@ import ImageCard from "./components/ImageCard";
 import Search from "./components/Search";
 import Welcome from "./components/Welcome";
 
-const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
+//const UNSPLASH_KEY = process.env.REACT_APP_UNSPLASH_KEY;
+const API_URL = process.env.REACT_APP_API_URL || "http://localhost:5050";
 
 function App() {
   const [word, setWord] = useState("");
@@ -21,9 +22,10 @@ function App() {
     // how to get value of the input field (as in next line)
     //console.log(e.target[0].value);
     //console.log(word); // after word is defined, one can use that instaed of e.target[0].value to get user input in the search field
-    fetch(
-      `https://api.unsplash.com/photos/random?query=${word}&client_id=${UNSPLASH_KEY}`
-    )
+    // fetch(
+    //   `https://api.unsplash.com/photos/random?query=${word}&client_id=${UNSPLASH_KEY}`
+    // )
+    fetch(`${API_URL}/new-image?query=${word}`)
       .then((res) => res.json())
       .then((data) => {
         console.log(data);
