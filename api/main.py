@@ -1,5 +1,4 @@
 import os
-from email.charset import add_codec
 
 import requests
 from dotenv import load_dotenv
@@ -9,6 +8,7 @@ load_dotenv(dotenv_path="./.env.local")
 
 UNSPLASH_URL='https://api.unsplash.com/photos/random'
 UNSPLASH_KEY=os.environ.get("UNSPLASH_KEY", "")
+DEBUG=bool(os.environ.get("DEBUG", ""))
 
 if not UNSPLASH_KEY:
   raise EnvironmentError("Please create .env.local and add the UNSPLASH_KEY to it")
@@ -32,4 +32,4 @@ def new_image():
         
 
 if __name__ == "__main__":
-  app.run(host="0.0.0.0", port=5050)
+  app.run(host="0.0.0.0", port=5050, debug=DEBUG)
