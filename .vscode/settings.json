@@ -1,4 +1,7 @@
 {
   "editor.tabSize": 2,
-  "python.pythonPath": "~/react_xpts/react-crash-course/myenv/bin/python3"
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.autopep8",
+    "editor.formatOnSave": true
+  }
 }
